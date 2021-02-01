@@ -1,23 +1,50 @@
 body {
     font-family: sans-serif;
-    background-color:rgb(17, 107, 80)
+    background-color:rgb(17, 107, 80);
   }
 
   header {
     text-align: center;
-    padding: 20px;
-    padding-top: 0px;
-    color: hsl(206, 17%, 28%);
+    padding: 12px;
+    background-color: hsl(206, 17%, 28%);
+    border:3px solid 
   }
 
   aside {
-    text-align: center;
+    margin-right: 20px;
+    padding: 20px;
+    width: 10%;
+    height: 100%;
+    background-color: hsl(206, 83%, 25%);
+    float: left;
+    margin-bottom: 30px;
   }
 
   #current{
-    text-align: center;  
+    text-align: center;
+    background-color: hsl(206, 83%, 25%); 
+    max-width: 500px;
+    height: 50vh;
+    border:5px solid  hsl(206, 17%, 28%);
+    margin:0 auto;
+  }
+
+  .container{
+    display: grid;
+   grid-template-rows:20% 80%;
+   text-align: center;
+   padding: 25px;
+  }
+  .container h2,h3,h4,span {
+    margin:0;
+  }
+  .container h2{
+    font-size: 16rem;
   }
 
   #fiveday {
     text-align: center; 
+    background-color: hsl(206, 83%, 25%);
+    border:5px solid  hsl(206, 17%, 28%);
   }
+
