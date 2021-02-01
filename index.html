@@ -19,7 +19,7 @@
 </header>
 <div class="container">
     <!--search div-->
-    <div class="col-sm-5">
+    <div class="col-sm-3">
         <h3 class="searchCity">Search for a City</h3>
         <div class="input">
             <input type="text" class="form" id="city search">
@@ -27,11 +27,56 @@
              <button class="btn" id="searchButton"><i class="fa-search"></i></button>
      </div>
     </div>
-    <!--search list-->
+    <!--previous city search list-->
         <ul class="searchHistory"></ul>
     </div>
-
-
+    <div class="col-sm-8">
+        <!--current Weather-->
+        <div class="col-sm-12" id="currentWeather">
+            <h3 class="cityName " id="currentCity"></h3>
+            <p>Temp:<span class="current" id="temperature"></span></p>
+            <p>Humidity:<span class="current" id="humidity"></span></p> 
+            <p>Wind Speed:<span class="current" id="wind"></span></p>
+            <p>UV index:<span class="current" id="uv-index"></span></p>  
+    </div>
+    </div>
+    <!-- 5 day forcast weather-->
+    <div class="col-sm-12" id ="future-weather">
+        <h2>5-Day Forecast:</h2>
+        <div class="flex-row">
+            <div class="col-sm-4" >
+                <p id="Image0"></p>
+                <p id="Date0"></p>
+                <p>Tempurature<span id="Temp0"></span></p>
+                <p>Humidity:<span id="Hum0"></span></p>
+            </div>
+            <div class="col-sm-4" >
+                <p id="Image1"></p>
+                <p id="Date1"></p>
+                <p>Temp:<span id="Temp1"></span></p>
+                <p>Humidity:<span id="Hum1"></span></p>
+            </div>
+            <div class="col-sm-4 ">
+                <p id="Image2"></p>
+                <p id="Date2"></p>
+                <p>Temp:<span id="Temp2"></span></p>
+                <p>Humidity:<span id="Hum2"></span></p>
+            </div>
+            <div class="col-sm-4 ">
+                <p id="Image3"></p>
+                <p id="Date3"></p>
+                <p>Temp:<span id="Temp3"></span></p>
+                <p>Humidity:<span id="Hum3"></span></p>
+            </div>
+            <div class="col-sm-4" >
+                <p id="Image4"></p>
+                <p id="Date4"></p>
+                <p>Temp:<span id="Temp4"></span></p>
+                <p>Humidity:<span id="Hum4"></span></p>
+            </div>
+        </div>
+    </div>
+</div>
 <!--Script including Jquery bootstrap API-->
 <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
