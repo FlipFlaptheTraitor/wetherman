@@ -11,10 +11,18 @@ body {
   background-color: rgb(233, 195, 139);
 
 }
+header{
+  background-color:rgb(158, 158, 240);
+  text-align: center;
+
+}
 
 h1,h2,h3 {
   font-weight:bold;
   margin-bottom: 5rem;
+}
+#input{
+  margin:3px;
 }
 span{
   font-size: 1.4rem;
