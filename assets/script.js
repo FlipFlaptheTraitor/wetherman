@@ -1,6 +1,6 @@
 // variables
 var searchBtn =  $("#search-button");
-var searchCity = $("#search-city");
+var searchCity = $("#city-search");
 var currentCity = $("#current-City");
 var currentTemp = $("#tempurature");
 var currentHumidty = $("#humitity");
@@ -39,15 +39,15 @@ function currentWeather(cityid){
         method:"GET",
  })
         .then(function(response){ 
-         console.log(response);
  // varibles for current weather info
         var Farenheit = (response.main.temp - 273.15) * 1.80 + 32;
         var ws=response.wind.speed;
         var windsmph=(ws*2.237).toFixed(1);
         //displays current weather info
             $(currentCity).html(response.name);
-            $(currentTemp).html((Farenheit).toFixed(2)+"&#8457");
-            $(currentHumidty).html(response.main.humidity+"%");
+          //  $(currentTemp).html();
+            $('#temperature').html((Farenheit).toFixed(2)+"&#8457");
+            $('#humidity').html(response.main.humidity+"%");
             $(currentWind).html(windsmph+"MPH");
             UVIndex(response.coord.lon,response.coord.lat);
             forecast(response.id);
@@ -68,7 +68,23 @@ function currentWeather(cityid){
          }
         }
      }
- });
+ }).catch(function(err){
+     if(err.status == 404)
+ {
+
+    alert("City Not Found.Try searching another city.");
+    $('#temperature').html('');
+    $('#humidity').html('');
+    $(currentWind).html('');
+    $(currentUv).html('');
+    for (i=0;i<5;i++){
+            $("#Temp"+i).html('');
+           $("#Hum"+i).html("");
+        }
+ }
+    
+    
+    });
 }
 function forecast(cityid){
     var queryforcastURL="https://api.openweathermap.org/data/2.5/forecast?id="+cityid+"&appid="+openweather;
@@ -76,13 +92,12 @@ function forecast(cityid){
         url:queryforcastURL,
         method:"GET"
     }).then(function(response){
-        
     for (i=0;i<5;i++){
      var tempK= response.list[((i+1)*8)-1].main.temp;
      var Farenheit=(((tempK-273.5)*1.80)+32).toFixed(2);
      var humidity= response.list[((i+1)*8)-1].main.humidity;
-         $("#fTemp"+i).html(Farenheit+"&#8457");
-        $("#fHumidity"+i).html(humidity+"%");
+         $("#Temp"+i).html(Farenheit+"&#8457");
+        $("#Hum"+i).html(humidity+"%");
      }
  });
 }
@@ -112,6 +127,6 @@ function invokePastSearch(event){
     }
 }
 //Handlers
-$("#search-button").on("click",display);
+$("#searchBtn").on("click",display);
 $(document).on("click",invokePastSearch);
 $(window).on("load",loadlastCity);
