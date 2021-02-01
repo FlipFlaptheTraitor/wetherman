@@ -1,13 +1,25 @@
-var searchButton 
-var city
-var searchCity 
-var currentCity =
-var currentTemperature 
-var currentHumidty
-var currentWSpeed
-var currentUvindex 
-function display{
+// variables
+var searchButton =  $("#search-button");
+var searchCity = $("#");
+var currentCity = $("#currentCity");
+var currentTemp = $("#tempurature");
+var currentHumidty = $("#humitity");
+var currenWind = $("#wind");
+var currentUv = $("#uvIndex");
+//filled by search function
+var city ="";
+//stores previous searches
+var historyarray =[];
+//API uses url + city+ query+key
+var openweather="https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + "APIKey;a0aca8a89948154a4182dcecc780b513";
 
+
+function display(event){
+    event.preventDefault();
+    if(searchCity.val().trim()!==""){
+     city=searchCity.val().trim();
+     currentWeather(city);
+    }
 }
 
 function currentWeather(city){
