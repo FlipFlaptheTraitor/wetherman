@@ -1,8 +1,7 @@
 # Weather Dashboard
 
 ##Active link
-Active link for the site can be found here
-![](./ "")
+Active link for the site can be found here https://flipflapthetraitor.github.io/wetherman/
 ##Prerequisites
 This site requires nothing but a web browser to run and any text editor to edit the application.
 
@@ -11,9 +10,8 @@ Origin Repo can be found here https://github.com/FlipFlaptheTraitor/wetherman
 this is under the master branch.
 
 ##Usage
-
+This web application was designed to provide a user with the basic weather or a city. It is designed to allow a user to search a city, see that cities current weather, it will also display the 5 day forcast for that city, and it will also save and display the users previously searched cities. this application uses open weather api which is a open source weather data service allowing anyone to use this api with there application. in addition to openweather api this program also uses Jquery and bootstrap api.
 ##Credit
-
 edited by Kevin Miller (FlipFlaptheTraitor) using Git and VScode
 
 ##icence

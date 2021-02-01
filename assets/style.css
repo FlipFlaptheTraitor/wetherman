@@ -1,50 +1,24 @@
+/* Weather aplication CSS page*/
+*{
+  margin:0;
+    padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  box-sizing: border-box;
+}
 body {
-    font-family: sans-serif;
-    background-color:rgb(17, 107, 80);
-  }
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: rgb(233, 195, 139);
 
-  header {
-    text-align: center;
-    padding: 12px;
-    background-color: hsl(206, 17%, 28%);
-    border:3px solid 
-  }
+}
 
-  aside {
-    margin-right: 20px;
-    padding: 20px;
-    width: 10%;
-    height: 100%;
-    background-color: hsl(206, 83%, 25%);
-    float: left;
-    margin-bottom: 30px;
-  }
-
-  #current{
-    text-align: center;
-    background-color: hsl(206, 83%, 25%); 
-    max-width: 500px;
-    height: 50vh;
-    border:5px solid  hsl(206, 17%, 28%);
-    margin:0 auto;
-  }
-
-  .container{
-    display: grid;
-   grid-template-rows:20% 80%;
-   text-align: center;
-   padding: 25px;
-  }
-  .container h2,h3,h4,span {
-    margin:0;
-  }
-  .container h2{
-    font-size: 16rem;
-  }
-
-  #fiveday {
-    text-align: center; 
-    background-color: hsl(206, 83%, 25%);
-    border:5px solid  hsl(206, 17%, 28%);
-  }
-
+h1,h2,h3 {
+  font-weight:bold;
+  margin-bottom: 5rem;
+}
+span{
+  font-size: 1.4rem;
+}
+.forecast{
+  font-size: .8rem;
+}
