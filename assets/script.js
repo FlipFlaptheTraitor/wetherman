@@ -89,7 +89,7 @@ function forecast(cityid){
 function addToList(c){
     var listEl= $("<li>"+c+"</li>");
     $(listEl).attr("class","list-group-item");
-    $(listEl).attr("data-value",c.toUpperCase());
+    $(listEl).attr("data-value",c);
     $(".list-group").append(listEl);
 }
 function loadlastCity(){
