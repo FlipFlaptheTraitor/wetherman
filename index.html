@@ -22,22 +22,27 @@
     <div class="col-sm-3">
         <h3 class="searchCity">Search for a City</h3>
         <div class="input">
-            <input type="text" class="form" id="city search">
+            <input type="text" class="form" id="citySearch">
         <div class="buttonContainer">
              <button class="btn" id="searchBtn"><i class="fa-search"></i></button>
      </div>
     </div>
     <!--previous city search list-->
-        <ul class="searchHistory"></ul>
+    <div id="col-sm-12">
+        <h3>Searchhistory</h3>
+        <div id="searchHistory"></div>
     </div>
+    </div>
+    
     <div class="col-sm-8">
         <!--current Weather-->
         <div class="col-sm-12" id="currentWeather">
+            <div id="picture"> </div>
             <h3 class="cityName " id="currentCity"></h3>
             <p>Temp:<span class="current" id="temperature"></span></p>
             <p>Humidity:<span class="current" id="humidity"></span></p> 
             <p>Wind Speed:<span class="current" id="wind"></span></p>
-            <p>UV index:<span class="current" id="uv-index"></span></p>  
+            <p>UV index:<span class="current" id="uvIndex"></span></p>  
     </div>
     </div>
     <!-- 5 day forcast weather-->
@@ -45,34 +50,34 @@
         <h2>5-Day Forecast:</h2>
         <div class="flex-row">
             <div class="col-sm-4" >
-                <p id="Image0"></p>
-                <p id="Date0"></p>
-                <p>Tempurature<span id="Temp0"></span></p>
-                <p>Humidity:<span id="Hum0"></span></p>
+                <p id="image1"></p>
+                <p id="date1"></p>
+                <p>Tempurature<span id="temp1"></span></p>
+                <p>Humidity:<span id="hum1"></span></p>
             </div>
             <div class="col-sm-4" >
-                <p id="Image1"></p>
-                <p id="Date1"></p>
-                <p>Temp:<span id="Temp1"></span></p>
-                <p>Humidity:<span id="Hum1"></span></p>
+                <p id="image2"></p>
+                <p id="date2"></p>
+                <p>Temp:<span id="temp2"></span></p>
+                <p>Humidity:<span id="hum2"></span></p>
             </div>
             <div class="col-sm-4 ">
-                <p id="Image2"></p>
-                <p id="Date2"></p>
-                <p>Temp:<span id="Temp2"></span></p>
-                <p>Humidity:<span id="Hum2"></span></p>
+                <p id="image3"></p>
+                <p id="date3"></p>
+                <p>Temp:<span id="temp3"><span></p>
+                <p>Humidity:<span id="hum3"></span></p>
             </div>
             <div class="col-sm-4 ">
-                <p id="Image3"></p>
-                <p id="Date3"></p>
-                <p>Temp:<span id="Temp3"></span></p>
-                <p>Humidity:<span id="Hum3"></span></p>
+                <p id="image4"></p>
+                <p id="date4"></p>
+                <p>Temp:<span id="temp4"></span></p>
+                <p>Humidity:<span id="hum4"></span></p>
             </div>
             <div class="col-sm-4" >
-                <p id="Image4"></p>
-                <p id="Date4"></p>
-                <p>Temp:<span id="Temp4"></span></p>
-                <p>Humidity:<span id="Hum4"></span></p>
+                <p id="image5"></p>
+                <p id="cate5"></p>
+                <p>Temp:<span id="temp5"></span></p>
+                <p>Humidity:<span id="hum5"></span></p>
             </div>
         </div>
     </div>

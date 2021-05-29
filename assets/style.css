@@ -1,32 +1,33 @@
 /* Weather aplication CSS page*/
+/* Weather aplication CSS page*/
 *{
-  margin:0;
-    padding: 0;
-  font-family: 'Courier New', Courier, monospace;
-  box-sizing: border-box;
-}
-body {
-  font-size: 16px;
-  font-family: 'Courier New', Courier, monospace;
-  background-color: rgb(233, 195, 139);
-
-}
-header{
-  background-color:rgb(158, 158, 240);
-  text-align: center;
-
-}
-
-h1,h2,h3 {
-  font-weight:bold;
-  margin-bottom: 5rem;
-}
-#input{
-  margin:3px;
-}
-span{
-  font-size: 1.4rem;
-}
-.forecast{
-  font-size: .8rem;
-}
+    margin:0;
+      padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+  }
+  body {
+    font-size: 16px;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(233, 195, 139);
+  
+  }
+  header{
+    background-color:rgb(158, 158, 240);
+    text-align: center;
+  
+  }
+  
+  h1,h2,h3 {
+    font-weight:bold;
+    margin-bottom: 5rem;
+  }
+  #input{
+    margin:3px;
+  }
+  span{
+    font-size: 1.4rem;
+  }
+  .forecast{
+    font-size: .8rem;
+  }

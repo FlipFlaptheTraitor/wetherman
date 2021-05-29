@@ -1,117 +1,87 @@
 // variables
-var searchBtn =  $("#search-button");
-var searchCity = $("#search-city");
-var currentCity = $("#current-City");
-var currentTemp = $("#tempurature");
-var currentHumidty = $("#humitity");
-var currentWind = $("#wind");
-var currentUv = $("#uv-index");
-//filled by search function
+var citySearch  =  $("#citySearch");
+var searchBtn =  $("#searchBtn");
+var searchHistory =  $("#searchHistory");
+var picture  =  $("#picture");
+var currentCity =  $("#currentCity");
+var temperature =  $("#temperature");
+var humidity  =  $("#humidity");
+var wind =  $("#wind");
+var uvIndex =  $("#uvIndex");
 var city ="";
-//stores previous searches
-var historyarray =[];
-//API uses url+city+query+key
-var openweather="a0aca8a89948154a4182dcecc780b513";
-function display(event) {
+var history=[];
+var APIKey="8e09c83285771082c3edc61a6a9f484b";
+
+function displayWeather(event){
     event.preventDefault();
-    if(searchCity.val().trim()!==""){
-     city=searchCity.val().trim();
-     currentWeather(city);
+    if(citySearch.val().trim()!==""){
+        city=citySearch.val().trim();
+        currentWeather(city);
+
     }
 }
-//gets uv info from openweather
-function UVIndex(ln,lt){
-    var uvURL="https://api.openweathermap.org/data/2.5/uvi?appid="+ openweather+"&lat="+lt+"&lon="+ln;
-        $.ajax({
-        url:uvURL,
-         method:"GET"
+
+function  currentWeather(city){
+    var currentUrl= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
+    $.ajax({url:currentUrl,method:"GET",})
+    .then(function(response){
+        var icon= response.weather[0].icon;
+        var iconurl= "https://openweathermap.org/img/wn/"+icon +"@2x.png";
+        var date= new Date(response.dt*1000).toLocaleDateString();
+        currentCity.html(response.name +"("+date+")" + "<img src="+iconurl+">");
+        var fehrenheit = (response.main.temp - 273.15) * 1.80 + 32;
+       temperature.html((fehrenheit).toFixed(2)+"&#8457");
+        humidity.html(response.main.humidity+"%");
+        var windspeed=response.wind.speed;
+        var windmph=(windspeed*2.237).toFixed(1);
+        wind.html(windmph+"MPH");
+        uv(response.coord.lon,response.coord.lat);
+        fiveForcast(response.id);
+})
+};
+function uv(lon,lat){
+    var uvUrl="https://api.openweathermap.org/data/2.5/uvi?appid="+ APIKey+"&lat="+lat+"&lon="+lon;
+    $.ajax({url:uvUrl,method:"GET",})
+    .then(function(response){
+        uvIndex.html(response.value);
     })
-        .then(function(response){
-         $(currentUv).html(response.value);
- });
-} 
-function currentWeather(cityid){
-    //defines the url
-    var openweatherURL= "https://api.openweathermap.org/data/2.5/weather?q=" + cityid + "&APPID=" + openweather;
-    // logs open weather api info
-         $.ajax({
-        url:openweatherURL,
-        method:"GET",
- })
-        .then(function(response){ 
-         console.log(response);
- // varibles for current weather info
-        var Farenheit = (response.main.temp - 273.15) * 1.80 + 32;
-        var ws=response.wind.speed;
-        var windsmph=(ws*2.237).toFixed(1);
-        //displays current weather info
-            $(currentCity).html(response.name);
-            $(currentTemp).html((Farenheit).toFixed(2)+"&#8457");
-            $(currentHumidty).html(response.main.humidity+"%");
-            $(currentWind).html(windsmph+"MPH");
-            UVIndex(response.coord.lon,response.coord.lat);
-            forecast(response.id);
-        if(response.cod==200){
-            historyarray=JSON.parse(localStorage.getItem("cityname"));
-            console.log(historyarray);
-         if (historyarray==null){
-             historyarray=[];
-             historyarray.push(city);
-             localStorage.setItem("cityname",JSON.stringify(historyarray));
-            addToList(city);
-            }
-         else {
-        if(find(city)>0){
-             historyarray.push(city);
-             localStorage.setItem("cityname",JSON.stringify(historyarray));
-            addToList(city);
-         }
-        }
-     }
- });
 }
-function forecast(cityid){
-    var queryforcastURL="https://api.openweathermap.org/data/2.5/forecast?id="+cityid+"&appid="+openweather;
-        $.ajax({
-        url:queryforcastURL,
-        method:"GET"
-    }).then(function(response){
+function fiveForcast(cityid){
+    var fiveUrl="https://api.openweathermap.org/data/2.5/forecast?id="+cityid+"&appid="+APIKey;
+    $.ajax({url:fiveUrl,method:"GET",})
+    .then(function(response){
+        for (i=1;i<6;i++){
+            var date= new Date((response.list[((i+1)*8)-1].dt)*1000).toLocaleDateString();
+            var iconcode= response.list[((i+1)*8)-1].weather[0].icon;
+            var iconurl="https://openweathermap.org/img/wn/"+iconcode+".png";
+            var kelvin= response.list[((i+1)*8)-1].main.temp;
+            var tempF=(((kelvin-273.5)*1.80)+32).toFixed(2);
+            var humidity= response.list[((i+1)*8)-1].main.humidity;
         
-    for (i=0;i<5;i++){
-     var tempK= response.list[((i+1)*8)-1].main.temp;
-     var Farenheit=(((tempK-273.5)*1.80)+32).toFixed(2);
-     var humidity= response.list[((i+1)*8)-1].main.humidity;
-         $("#fTemp"+i).html(Farenheit+"&#8457");
-        $("#fHumidity"+i).html(humidity+"%");
-     }
- });
-}
-function addToList(c){
-    var listEl= $("<li>"+c+"</li>");
-    $(listEl).attr("class","list-group-item");
-    $(listEl).attr("data-value",c);
-    $(".list-group").append(listEl);
-}
-function loadlastCity(){
-    $("ul").empty();
-    var historyarray = JSON.parse(localStorage.getItem("cityname"));
-    if(historyarray!==null){
-     historyarray=JSON.parse(localStorage.getItem("cityname"));
-    for(i=0; i<historyarray.length;i++){
-         addToList(historyarray[i]);
+            $("#date"+i).html(date);
+           $("#Image"+i).html("<img src="+iconurl+">");
+           $("#temp"+i).html(tempF+"&#8457");
+           $("#hum"+i).html(humidity+"%");
+        }
+        
+    });
     }
-    city=historyarray[i-1];
-     currentWeather(city);
+    function searcHistory(){
+        var searches = JSON.parse(localStorage.getItem("RecentSearches"))
+console.log(searches)
+    if (searches) {
+        savedSearches.appendChild(document.createElement("select"))
+        for (var i = 0; i < searches.length; i++) {
+            var option = document.createElement("option")
+            option.value = searches[i]
+            option.textContent = searches[i]
+            savedSearches.lastChild.addEventListener("change", () => {
+                getWeather(savedSearches.lastChild.value)
+            })
+            savedSearches.lastChild.appendChild(option)
+        }
     }
-}
-function invokePastSearch(event){
-    var liEl=event.target;
-    if (event.target.matches("li")){
-    city=liEl.textContent.trim();
-     currentWeather(city);
+
     }
-}
 //Handlers
-$("#search-button").on("click",display);
-$(document).on("click",invokePastSearch);
-$(window).on("load",loadlastCity);
+searchBtn.on("click",displayWeather);
