@@ -13,7 +13,7 @@
     <title>Weatherman</title>
 </head>
 
-<body>
+
  <header>
     <h1>Weather Dashboard</h1>
 </header>
@@ -22,18 +22,18 @@
     <div class="col-sm-3">
         <h3 class="searchCity">Search for a City</h3>
         <div class="input">
-            <input type="text" class="form" id="citySearch">
+            <input type="text" id="citySearch">
         <div class="buttonContainer">
-             <button class="btn" id="searchBtn"><i class="fa-search"></i></button>
+             <button class="btn" id="searchBtn"><i>search</i></button>
      </div>
     </div>
     <!--previous city search list-->
     <div id="col-sm-12">
-        <h3>Searchhistory</h3>
-        <div id="searchHistory"></div>
+        <h3>Search History</h3>
+        <div id="searchHistorydiv"></div>
     </div>
     </div>
-    
+  
     <div class="col-sm-8">
         <!--current Weather-->
         <div class="col-sm-12" id="currentWeather">
@@ -75,7 +75,7 @@
             </div>
             <div class="col-sm-4" >
                 <p id="image5"></p>
-                <p id="cate5"></p>
+                <p id="date5"></p>
                 <p>Temp:<span id="temp5"></span></p>
                 <p>Humidity:<span id="hum5"></span></p>
             </div>
