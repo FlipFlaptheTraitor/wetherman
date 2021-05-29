@@ -9,26 +9,29 @@ var humidity  =  $("#humidity");
 var wind =  $("#wind");
 var uvIndex =  $("#uvIndex");
 var city ="";
-var history=[];
 var APIKey="8e09c83285771082c3edc61a6a9f484b";
+var history=[];
 
 
 
 
 function displayWeather(event){
     event.preventDefault();
+    var cityInput = document.querySelector("input[name='cityText']").value;
+    var saveHistory = function() {
+        localStorage.setItem("cityInput", JSON.stringify(cityInput));
+        var savedhistory = localStorage.getItem('cityInput');
+        savedhistory = JSON.parse(savedhistory);
+            $("#searchHistorydiv").html(savedhistory);
+      };
     if(citySearch.val().trim()!==""){
         city=citySearch.val().trim();
         currentWeather(city);
-       save();
+        var historyObj = {name: cityInput};
+        saveHistory(historyObj);
+    
     }
 }
-
-
-function save(){
-console.log("test")
-}
-
 function  currentWeather(city){
     var currentUrl= "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey;
     $.ajax({url:currentUrl,method:"GET",})
@@ -74,6 +77,6 @@ function fiveForcast(cityid){
         
     });
     }
-  
+
 //Handlers
 searchBtn.on("click",displayWeather);
